@@ -1,0 +1,84 @@
+servers = (
+  { address = "irc.ubuntu.com"; chatnet = "Ubuntu"; port = "8001"; },
+  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
+  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
+  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
+  { 
+    address = "irc.undernet.org";
+    chatnet = "Undernet";
+    port = "6667";
+  },
+  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
+  { 
+    address = "irc.quakenet.org";
+    chatnet = "QuakeNet";
+    port = "6667";
+  },
+  {
+    address = "irc.gamesurge.net";
+    chatnet = "GameSurge";
+    port = "6667";
+  },
+  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
+  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
+  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
+  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; },
+  {
+    address = "irc.deadcodersociety.org";
+    chatnet = "dcs";
+    port = "6697";
+    use_ssl = "yes";
+    nick = "dev_null";
+  },
+  {
+    address = "chat.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    nick = "npegg";
+  },
+  {
+    address = "localhost";
+    chatnet = "zncdcs";
+    port = "8224";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    nick = "dev_null";
+  },
+  {
+    address = "localhost";
+    chatnet = "zncfreenode";
+    port = "8224";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    nick = "npegg";
+  }
+);
+settings = {
+  core = { real_name = "Nick Pegg"; user_name = "nick"; nick = "npegg"; };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
+chatnets = {
+  Ubuntu = { type = "IRC"; };
+  IRCnet = { type = "IRC"; };
+  EFNet = { type = "IRC"; };
+  Undernet = { type = "IRC"; };
+  DALnet = { type = "IRC"; };
+  QuakeNet = { type = "IRC"; };
+  GameSurge = { type = "IRC"; };
+  WebChat = { type = "IRC"; };
+  Rizon = { type = "IRC"; };
+  LinkNet = { type = "IRC"; };
+  SILC = { type = "IRC"; };
+  dcs = { type = "IRC"; };
+  znc = { type = "IRC"; };
+  zncdcs = { type = "IRC"; };
+  freenode = { type = "IRC"; };
+  zncfreenode = { type = "IRC"; };
+};
+aliases = { q = "query"; wc = "window close"; };
+hilights = (
+  { text = "dev_null"; nick = "yes"; word = "yes"; },
+  { text = "npegg"; nick = "yes"; word = "yes"; },
+  { text = "dcs"; nick = "yes"; word = "yes"; }
+);
