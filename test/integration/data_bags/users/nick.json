@@ -1,0 +1,39 @@
+{
+  "id": "nick",
+  "comment": {
+    "encrypted_data": "ieoEJg067OkRbxC5PRRO+3nSnLcM1Nc6yH8LDh8pBqA=\n",
+    "iv": "FIZ0X2KFicxkZbRiR+rczQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "shell": {
+    "encrypted_data": "5GBBYXsxpMcYPIs3KRD5QBu/lFn4u+YdCy4DEAbi4hE=\n",
+    "iv": "gskwF8T7TgW7xxUCNOx9Bg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "password": {
+    "encrypted_data": "YOrWa6RU/6sEIjdQfuBSP0cmJwQl9Wbs+TgD5uZZkVCgfSDrZzl3nKCsHWN8\nFs8w\n",
+    "iv": "k8HfqyCYMkwzsQfF0E9wSg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "groups": {
+    "encrypted_data": "7TYm2KuV5s/USTfj8WtCtvVJrdvKjCmbwkshlqteAb42l8YwDEKWdEPaty59\nglB6\n",
+    "iv": "zrQHGMnpRmRyhIALMocprQ==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "ssh_keys": {
+    "encrypted_data": "OBVhJTT2F2HjVLr/Il13TZ9V3XrGZKIiOe/le2wnQhFzW+0Xj17q3UmZ32tj\nZIce\n",
+    "iv": "eWYTdHBFaZQu7ifzFfqfHg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "u2f_keys": {
+    "encrypted_data": "DF4Nq/X5norSWe7XF4i1weM1Un1piT7Fos3mmvW6Uv9L4yPGHtskLuPXKLxq\n17Wu\n",
+    "iv": "z5DhrwFfbE8daUjmUOkMgA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

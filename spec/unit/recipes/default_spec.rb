@@ -7,14 +7,15 @@
 require 'spec_helper'
 
 describe 'np-users::default' do
-  context 'When all attributes are default, on an unspecified platform' do
-    let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
-      runner.converge(described_recipe)
-    end
+  before do
+    common_stubs
 
-    it 'converges successfully' do
-      chef_run # This should not raise an error
-    end
+    @chef_run = memoized_runner(described_recipe)
   end
+
+  subject { @chef_run }
+
+  it { is_expected.to include_recipe('user::data_bag') }
+  it { is_expected.to include_recipe('np-users::u2f_keys') }
+  it { is_expected.to include_recipe('np-users::nick') }
 end

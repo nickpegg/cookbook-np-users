@@ -1,24 +1,53 @@
+home = '/home/nick'
+
 package 'zsh'
+package 'git'
 
-user_account 'nick'
+git ::File.join(home, '.oh-my-zsh') do
+  repository  'https://github.com/robbyrussell/oh-my-zsh.git'
+  user        'nick'
+end
 
-# TODO: set up oh-my-zsh
 # TODO: set up dotfiles
-# TODO: set up rbenv
+include_recipe 'python'
+python_pip 'dotfiles'
+
+cookbook_file ::File.join(home, '.dotfilesrc') do
+  source  'nick/dotfilesrc'
+  user    'nick'
+  group   'nick'
+end
+
+git ::File.join(home, '.dotfiles') do
+  repository  'https://github.com/nickpegg/dotfiles'
+  user        'nick'
+  group       'nick'
+
+  notifies :run, 'execute[sync nick dotfiles]', :delayed
+end
+
+execute 'sync nick dotfiles' do
+  action      :nothing
+  user        'nick'
+  group       'nick'
+  cwd         home
+  environment ({'HOME' => home})
+  command     'dotfiles --sync'
+end
 
 if node[:np_users][:nick][:irc]
   package 'irssi'
 
-  directory '/home/nick/.irssi/' do
+  directory ::File.join(home, '.irssi') do
     owner 'nick'
     group 'nick'
-    mode  '0750'
+    mode '0750'
   end
 
-  cookbook_file '/home/nick/.irssi/config' do
-    source  'nick/irssi_config'
-    owner   'nick'
-    group   'nick'
-    mode    '0640'
+  cookbook_file ::File.join(home, '.irssi/config') do
+    source 'nick/irssi_config'
+    owner 'nick'
+    group 'nick'
+    mode '0640'
   end
 end

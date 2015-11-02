@@ -1,0 +1,27 @@
+{
+  "id": "rsaxvc",
+  "comment": {
+    "encrypted_data": "LxIhEAOi1bljLkRWEEZAzQvOGoBt0SWzAsxjPzEOqF2MAG2w/EMR4UeOE/Rl\nZfG1\n",
+    "iv": "isUTYuyHZaiqt7195xmyvA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "password": {
+    "encrypted_data": "LAQ2JQsatTomT2Yp5qb/TvlXk9C4107MG0p7YYdrcohYr6ejIZ5x/A34VB6n\noPqG\n",
+    "iv": "O7WcTOmFnZej68JN5c796Q==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "groups": {
+    "encrypted_data": "LPOTrOpW2Goq+2XCZNfx8gYdY9WoWYDZZxFZOv0ret4=\n",
+    "iv": "uk2BcirNkqame004UNq1Pw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "ssh_keys": {
+    "encrypted_data": "yxHSHd2+QX0Y0IMFKSnovUu3uovyU2XorKUAOS1QuR7EM75Rkx/AOncN4TEZ\nk99F\n",
+    "iv": "7fCxtwU/bJ7mpPoScJLovA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

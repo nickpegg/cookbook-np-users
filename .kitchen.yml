@@ -1,16 +1,25 @@
 ---
 driver:
   name: vagrant
+  customize:
+    memory: 1024
 
 provisioner:
   name: chef_zero
+  encrypted_data_bag_secret_key_path: 'test/integration/encrypted_data_bag_secret'
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.5
+  - name: ubuntu-14.04
+  - name: debian-8.2
 
 suites:
   - name: default
     run_list:
       - recipe[np-users::default]
     attributes:
+      users:
+        - nick
+        - rsaxvc
+      np_users:
+        nick:
+          irc: true
