@@ -23,7 +23,7 @@ git ::File.join(home, '.dotfiles') do
   user        'nick'
   group       'nick'
 
-  notifies :create, "file[#{home}/.dotfilesrc]"
+  notifies :create, "remote_file[#{home}/.dotfilesrc]"
   notifies :run, "execute[sync nick dotfiles]", :delayed
 end
 
