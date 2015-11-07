@@ -27,10 +27,10 @@ git ::File.join(home, '.dotfiles') do
   notifies :run, "execute[sync nick dotfiles]", :delayed
 end
 
-file ::File.join(home, '.dotfilesrc') do
+remote_file ::File.join(home, '.dotfilesrc') do
   user    'nick'
   group   'nick'
-  content "file:///#{home}/."
+  source  "file:///#{home}/.dotfiles/.dotfilesrc"
   action  :nothing
 
   notifies :run, "execute[sync nick dotfiles]", :delayed
