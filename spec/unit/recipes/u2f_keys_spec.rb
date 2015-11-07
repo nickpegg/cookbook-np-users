@@ -19,8 +19,7 @@ describe 'np-users::u2f_keys' do
 
   it { is_expected.to create_directory(base_dir).with(
     owner: 'nick',
-    group: 'nick',
-    recursive: true
+    group: 'nick'
   ) }
 
   it { is_expected.to create_file(::File.join(base_dir, 'u2f_keys')).with(
