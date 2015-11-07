@@ -23,14 +23,14 @@ git ::File.join(home, '.dotfiles') do
   user        'nick'
   group       'nick'
 
-  notifies :create, "file[#{home}/.dotfilesrc]", :immediately
+  notifies :create, "file[#{home}/.dotfilesrc]"
   notifies :run, "execute[sync nick dotfiles]", :delayed
 end
 
 file ::File.join(home, '.dotfilesrc') do
   user    'nick'
   group   'nick'
-  content ::File.open(::File.join(home, '.dotfiles/.dotfilesrc')).read
+  content "file:///#{home}/."
   action  :nothing
 
   notifies :run, "execute[sync nick dotfiles]", :delayed
