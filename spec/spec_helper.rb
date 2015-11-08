@@ -10,6 +10,7 @@ module SpecHelper
     stub_data_bag('users').and_return(%w(nick test1))
     stub_enc_data_bag('users', 'nick', {
       'id' => 'nick',
+      'dotfiles_repo' => 'https://github.com/nickpegg/dotfiles',
       'u2f_keys' => [
         'some_yubikey'
       ]

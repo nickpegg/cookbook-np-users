@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: np-users
-# Spec:: default
+# Spec:: u2f_keys
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
