@@ -22,18 +22,10 @@ data_bag('users').each do |user|
     user        user
     group       user
 
-    notifies :create, "remote_file[#{home}/.dotfilesrc]"
     notifies :run, "execute[sync #{user} dotfiles]", :delayed
   end
 
-  remote_file ::File.join(home, '.dotfilesrc') do
-    user    user
-    group   user
-    source  "file:///#{home}/.dotfiles/dotfilesrc"
-    action  :nothing
-
-    notifies :run, "execute[sync #{user} dotfiles]", :delayed
-  end
+  config_path = ::File.join(home, '.dotfiles', 'dotfilesrc')
 
   execute "sync #{user} dotfiles" do
     action      :nothing
@@ -41,6 +33,6 @@ data_bag('users').each do |user|
     group       user
     cwd         home
     environment ({'HOME' => home})
-    command     'dotfiles --sync'
+    command     "dotfiles --sync -C #{config_path}"
   end
 end
