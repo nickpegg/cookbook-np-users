@@ -9,6 +9,7 @@ include_recipe 'user::data_bag'
 include_recipe 'python'
 python_pip 'dotfiles'
 
+package 'git'
 
 data_bag('users').each do |user|
   dbag = Chef::EncryptedDataBagItem.load('users', user)
@@ -28,7 +29,7 @@ data_bag('users').each do |user|
   remote_file ::File.join(home, '.dotfilesrc') do
     user    user
     group   user
-    source  "file:///#{home}/.dotfiles/.dotfilesrc"
+    source  "file:///#{home}/.dotfiles/dotfilesrc"
     action  :nothing
 
     notifies :run, "execute[sync #{user} dotfiles]", :delayed

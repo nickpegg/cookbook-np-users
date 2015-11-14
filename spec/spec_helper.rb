@@ -24,7 +24,6 @@ module SpecHelper
   def memoized_runner(recipe)
     @runner ||= begin
       runner = ChefSpec::SoloRunner.new
-
       runner.converge recipe
     end
   end
