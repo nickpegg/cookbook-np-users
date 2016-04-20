@@ -23,7 +23,8 @@ describe 'np-users::dotfiles' do
       is_expected.to sync_git('/home/nick/.dotfiles').with(
         user: 'nick',
         group: 'nick',
-        repository: 'https://github.com/nickpegg/dotfiles'
+        repository: 'https://github.com/nickpegg/dotfiles',
+        reference: 'master'
       )
     end
   end

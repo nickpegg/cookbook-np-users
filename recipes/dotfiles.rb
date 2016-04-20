@@ -21,6 +21,7 @@ data_bag('users').each do |user|
     repository  dbag['dotfiles_repo']
     user        user
     group       user
+    reference   node[:np_users][:dotfiles][:git_ref]
 
     notifies :run, "execute[sync #{user} dotfiles]", :delayed
   end
@@ -32,7 +33,7 @@ data_bag('users').each do |user|
     user        user
     group       user
     cwd         home
-    environment ({'HOME' => home})
-    command     "dotfiles --sync -C #{config_path}"
+    environment('HOME' => home)
+    command "dotfiles --sync -C #{config_path}"
   end
 end
