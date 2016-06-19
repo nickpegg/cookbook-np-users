@@ -4,11 +4,11 @@ require 'chefspec/berkshelf'
 module SpecHelper
   @@runner = {} # rubocop:disable Style/ClassVars
 
-  def stub_enc_data_bag(bag, item, contents={})
+  def stub_enc_data_bag(bag, item, contents = {})
     allow(Chef::EncryptedDataBagItem).to receive(:load).with(bag, item).and_return(contents)
   end
 
-  def common_stubs
+  def common_stubs # rubocop:disable Metrics/MethodLength
     stub_data_bag('users').and_return(%w(nick test1))
     stub_enc_data_bag(
       'users',

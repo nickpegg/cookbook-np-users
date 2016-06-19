@@ -1,16 +1,19 @@
 ---
 driver:
-  name: vagrant
-  customize:
-    memory: 1024
+  name: docker
+  use_sudo: false
+  provision_command:
+    - apt-get update
+    - apt-get install -y curl wget net-tools
 
 provisioner:
   name: chef_zero
   encrypted_data_bag_secret_key_path: 'test/integration/encrypted_data_bag_secret'
 
 platforms:
+  - name: ubuntu-16.04
   - name: ubuntu-14.04
-  - name: debian-8.1
+  - name: debian-8
 
 suites:
   - name: default
