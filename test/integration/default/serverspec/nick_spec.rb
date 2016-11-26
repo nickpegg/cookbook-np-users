@@ -13,14 +13,4 @@ describe 'np-users::nick' do
     it_behaves_like 'a nick file'
     it { is_expected.to be_directory }
   end
-
-  describe file('/home/nick/.irssi') do
-    it_behaves_like 'a nick file'
-    it { is_expected.to be_directory }
-  end
-
-  describe file('/home/nick/.irssi/config') do
-    it_behaves_like 'a nick file'
-    it { is_expected.to_not be_readable.by 'others' }
-  end
 end
