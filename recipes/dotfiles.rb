@@ -36,8 +36,7 @@ data_bag('users').each do |user|
     content ddd_cfg.to_yaml
   end
 
-  execute "... install" do
-    #action :nothing
+  execute '... install' do
     user        user
     group       user
     cwd         home

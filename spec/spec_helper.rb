@@ -28,7 +28,9 @@ module SpecHelper
       'id' => 'test1'
     )
 
-    stub_command(".../... super_update 2>&1 | grep -E '(^Cloning into|^Fast-forward)'").and_return false
+    stub_command(
+      ".../... super_update 2>&1 | grep -E '(^Cloning into|^Fast-forward)'"
+    ).and_return false
   end
 
   def memoized_runner(recipe, options = {}, name = '')
