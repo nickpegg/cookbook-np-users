@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'berkshelf'
+gem 'chefspec'
+gem 'docker-api'
+gem 'fauxhai'
+gem 'kitchen-docker'
+gem 'rubocop'
+gem 'rspec'
+gem 'test-kitchen'
