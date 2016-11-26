@@ -15,6 +15,9 @@ describe 'np-users::dotfiles' do
 
   subject { @chef_run }
 
+  it { is_expected.to install_package 'cpio' }
+  it { is_expected.to install_package 'git' }
+
   context 'for the user nick' do
     it do
       is_expected.to checkout_git('/home/nick/...').with(

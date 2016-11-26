@@ -6,7 +6,6 @@ description 'Sets up users'
 long_description 'Sets up users'
 version '0.1.6'
 
-depends 'apt'
 depends 'user', '~> 0.4.2'
 depends 'python', '~> 1.4.6'
 

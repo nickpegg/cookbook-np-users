@@ -8,6 +8,7 @@ require 'yaml'
 
 include_recipe 'user::data_bag'
 
+package 'cpio'
 package 'git'
 
 data_bag('users').each do |user|
