@@ -17,9 +17,7 @@ data_bag('users').each do |user|
 
   home = ::File.join(node['user']['home_root'], user)
 
-  ddd_cfg = {
-    'dots' => dbag['dotfiles_repos'].to_a
-  }
+  ddd_cfg = { 'dots' => dbag['dotfiles_repos'].to_a }
 
   git ::File.join(home, '...') do
     action :checkout
