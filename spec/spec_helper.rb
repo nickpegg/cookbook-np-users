@@ -14,7 +14,9 @@ module SpecHelper
       'users',
       'nick',
       'id' => 'nick',
-      'dotfiles_repo' => 'https://github.com/nickpegg/dotfiles',
+      'dotfiles_repos' => [
+        { 'repo' => 'https://github.com/nickpegg/dotfiles' }
+      ],
       'u2f_keys' => [
         'some_yubikey'
       ]
@@ -25,11 +27,16 @@ module SpecHelper
       'test1',
       'id' => 'test1'
     )
+
+    stub_command(".../... super_update 2>&1 | grep -E '(^Cloning into|^Fast-forward)'").and_return false
   end
 
-  def memoized_runner(recipe)
-    @@runner[recipe] ||= begin
-      runner = ChefSpec::SoloRunner.new
+  def memoized_runner(recipe, options = {}, name = '')
+    options[:platform] ||= 'ubuntu'
+    options[:version] ||= '16.04'
+
+    @@runner[recipe + ' ' + name] ||= begin
+      runner = ChefSpec::SoloRunner.new options
       runner.converge recipe
     end
   end
