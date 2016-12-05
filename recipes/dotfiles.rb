@@ -8,7 +8,8 @@ require 'yaml'
 
 include_recipe 'user::data_bag'
 
-package %w(cpio git)
+package 'cpio'
+package 'git'
 
 data_bag('users').each do |user|
   dbag = Chef::EncryptedDataBagItem.load('users', user)
