@@ -24,5 +24,8 @@ suites:
         - nick
         - rsaxvc
       np_users:
-        nick:
-          irc: true
+        dotfiles:
+          repos:
+            nick:
+              - repo: https://github.com/nickpegg/dotfiles
+                branch: master

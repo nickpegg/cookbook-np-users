@@ -5,6 +5,7 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 require 'spec_helper'
+require 'yaml'
 
 describe 'np-users::dotfiles' do
   before do
@@ -33,6 +34,38 @@ describe 'np-users::dotfiles' do
         group: 'nick',
         mode: '0644'
       )
+    end
+  end
+
+  context 'with extra repos specified via attributes' do
+    subject do
+      memoized_runner(described_recipe, 'extra repos') do |node|
+        node.override[:np_users][:dotfiles][:repos] = {
+          'nick' => [
+            {
+              'repo' => 'https://github.com/nickpegg/dotfiles',
+              'branch' => 'foo'
+            }
+          ]
+        }
+      end
+    end
+
+    it 'has all the repos in the dotdotdot config' do
+      expected_config = {
+        'dots' => [
+          {
+            'repo' => 'https://github.com/nickpegg/dotfiles',
+            'branch' => 'foo',
+            'path' => 'foo'
+          },
+          {
+            'repo' => 'https://github.com/nickpegg/dotfiles'
+          }
+        ]
+      }
+
+      is_expected.to create_file('/home/nick/.../conf').with_content(expected_config.to_yaml)
     end
   end
 end
