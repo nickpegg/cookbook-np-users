@@ -33,13 +33,15 @@ module SpecHelper
     ).and_return false
   end
 
-  def memoized_runner(recipe, options = {}, name = '')
+  def memoized_runner(recipe, name = '', options = {})
     options[:platform] ||= 'ubuntu'
     options[:version] ||= '16.04'
 
     @@runner[recipe + ' ' + name] ||= begin
       runner = ChefSpec::SoloRunner.new options
+      yield runner.node if block_given?
       runner.converge recipe
+      runner
     end
   end
 end

@@ -17,7 +17,19 @@ data_bag('users').each do |user|
 
   home = ::File.join(node['user']['home_root'], user)
 
-  ddd_cfg = { 'dots' => dbag['dotfiles_repos'].to_a }
+  repos = dbag['dotfiles_repos'].to_a
+
+  # Merge in any repos that are specified via attributes
+  unless node[:np_users][:dotfiles][:repos][user].nil?
+    repos = node[:np_users][:dotfiles][:repos][user].to_a + repos
+  end
+
+  # Ensure all repos have a path. Use the branch name if not given.
+  repos.each do |repo|
+    repo['path'] ||= repo['branch'] unless repo['branch'].nil?
+  end
+
+  ddd_cfg = { 'dots' => repos }
 
   git ::File.join(home, '...') do
     action :checkout

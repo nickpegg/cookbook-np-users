@@ -22,9 +22,12 @@ describe 'np-users::dotfiles' do
     it 'should have correct repos set up' do
       repos = YAML.load(File.read('/home/nick/.../conf'))['dots']
       expect(repos[0]['repo']).to eq 'https://github.com/nickpegg/dotfiles'
-      expect(repos[0]['branch']).to eq 'polo'
+      expect(repos[0]['branch']).to eq 'master'
+      expect(repos[0]['path']).to eq 'master'
       expect(repos[1]['repo']).to eq 'https://github.com/nickpegg/dotfiles'
-      expect(repos[1]['branch']).to be_nil
+      expect(repos[1]['branch']).to eq 'polo'
+      expect(repos[2]['repo']).to eq 'https://github.com/nickpegg/dotfiles'
+      expect(repos[2]['branch']).to be_nil
     end
   end
 end

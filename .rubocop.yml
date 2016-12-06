@@ -3,3 +3,6 @@ Metrics/LineLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 50
