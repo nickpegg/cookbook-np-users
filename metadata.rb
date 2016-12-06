@@ -4,7 +4,7 @@ maintainer_email 'nick@nickpegg.com'
 license 'all_rights'
 description 'Sets up users'
 long_description 'Sets up users'
-version '0.1.6'
+version '0.1.7'
 
 depends 'user'
 depends 'python', '~> 1.4.6'
