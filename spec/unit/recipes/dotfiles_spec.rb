@@ -40,7 +40,7 @@ describe 'np-users::dotfiles' do
   context 'with extra repos specified via attributes' do
     subject do
       memoized_runner(described_recipe, 'extra repos') do |node|
-        node.override[:np_users][:dotfiles][:repos] = {
+        node.override['np-users']['dotfiles']['repos'] = {
           'nick' => [
             {
               'repo' => 'https://github.com/nickpegg/dotfiles',

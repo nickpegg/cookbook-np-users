@@ -10,9 +10,11 @@ dependencies:
     - sudo dpkg -i chefdk.deb
 
 test:
-  override:
-    - bundle exec rubocop
-    - bundle exec rspec --color
+  pre:
     - bundle exec kitchen create -c8
     - bundle exec kitchen converge -c8
+  override:
+    - bundle exec rubocop
+    - bundle exec foodcritic .
+    - bundle exec rspec --color
     - bundle exec kitchen verify
