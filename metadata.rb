@@ -6,6 +6,9 @@ description 'Sets up users'
 long_description 'Sets up users'
 version '0.1.7'
 
+source_url 'https://github.com/nickpegg/cookbook-np-users'
+issues_url 'https://github.com/nickpegg/cookbook-np-users/issues'
+
 depends 'user'
 depends 'python', '~> 1.4.6'
 

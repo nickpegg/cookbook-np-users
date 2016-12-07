@@ -13,4 +13,4 @@
 # ]
 #
 # If `:path` is omitted, the branch name is used for it
-default[:np_users][:dotfiles][:repos] = {}
+default['np-users']['dotfiles']['repos'] = {}

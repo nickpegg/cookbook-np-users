@@ -23,7 +23,7 @@ suites:
       users:
         - nick
         - rsaxvc
-      np_users:
+      np-users:
         dotfiles:
           repos:
             nick:

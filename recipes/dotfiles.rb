@@ -20,8 +20,8 @@ data_bag('users').each do |user|
   repos = dbag['dotfiles_repos'].to_a
 
   # Merge in any repos that are specified via attributes
-  unless node[:np_users][:dotfiles][:repos][user].nil?
-    repos = node[:np_users][:dotfiles][:repos][user].to_a + repos
+  unless node['np-users']['dotfiles']['repos'][user].nil?
+    repos = node['np-users']['dotfiles']['repos'][user].to_a + repos
   end
 
   # Ensure all repos have a path. Use the branch name if not given.
