@@ -12,12 +12,12 @@ package 'cpio'
 package 'git'
 
 data_bag('users').each do |user|
-  dbag = Chef::EncryptedDataBagItem.load('users', user)
+  dbag = data_bag_item('users', user)
   next unless dbag['dotfiles_repos']
 
   home = ::File.join(node['user']['home_root'], user)
 
-  repos = dbag['dotfiles_repos'].to_a
+  repos = dbag['dotfiles_repos'].to_a.map(&:to_hash)
 
   # Merge in any repos that are specified via attributes
   unless node['np-users']['dotfiles']['repos'][user].nil?

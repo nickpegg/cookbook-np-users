@@ -20,7 +20,7 @@ describe 'np-users::dotfiles' do
     it { is_expected.to be_file }
 
     it 'should have correct repos set up' do
-      repos = YAML.load(File.read('/home/nick/.../conf'))['dots']
+      repos = YAML.safe_load(File.read('/home/nick/.../conf'))['dots']
       expect(repos[0]['repo']).to eq 'https://github.com/nickpegg/dotfiles'
       expect(repos[0]['branch']).to eq 'master'
       expect(repos[0]['path']).to eq 'master'
