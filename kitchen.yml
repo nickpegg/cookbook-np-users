@@ -1,4 +1,7 @@
 ---
+verifier:
+  name: inspec
+
 driver:
   name: docker
   use_sudo: false
@@ -9,6 +12,9 @@ driver:
 provisioner:
   name: chef_zero
   encrypted_data_bag_secret_key_path: 'test/integration/encrypted_data_bag_secret'
+  data_bags_path: test/integration/data_bags
+  product_name: cinc
+  channel: stable
 
 platforms:
   - name: ubuntu-19.10
