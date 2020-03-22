@@ -7,11 +7,7 @@ describe user('nick') do
 end
 
 describe file('/home/nick/.ssh/authorized_keys') do
-  its('content') { should match 'nicks_ssh_key' }
-end
-
-describe shadow.where(user: 'nick') do
-  its('passwords.uniq') { should include 'totally_legit_password_hash' }
+  its('content') { should match 'nick@polo' }
 end
 
 describe user('rsaxvc') do
@@ -21,10 +17,7 @@ describe user('rsaxvc') do
   its('shell') { should eq '/bin/bash' }
 end
 
-describe shadow.where(user: 'rsaxvc') do
-  its('passwords.uniq') { should include 'totally_legit_password_hash' }
-end
-
 describe file('/home/rsaxvc/.ssh/authorized_keys') do
-  its('content') { should match 'richards_ssh_key' }
+  its('content') { should match 'rsaxvc@rsaxvc.net' }
+  its('content') { should match 'rsaxvc@gmail.com' }
 end

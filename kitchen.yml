@@ -11,8 +11,6 @@ driver:
 
 provisioner:
   name: chef_zero
-  encrypted_data_bag_secret_key_path: 'test/integration/encrypted_data_bag_secret'
-  data_bags_path: test/integration/data_bags
   product_name: cinc
   channel: stable
 
@@ -25,13 +23,12 @@ suites:
   - name: default
     run_list:
       - recipe[np-users::default]
+      - recipe[np-users::rsaxvc]
     attributes:
-      users:
-        - nick
-        - rsaxvc
       np-users:
         dotfiles:
           repos:
             nick:
               - repo: https://github.com/nickpegg/dotfiles
-                branch: master
+                branch: polo
+              - repo: https://github.com/nickpegg/dotfiles
