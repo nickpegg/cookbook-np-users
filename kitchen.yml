@@ -31,4 +31,5 @@ suites:
             nick:
               - repo: https://github.com/nickpegg/dotfiles
                 branch: polo
+                path: polo
               - repo: https://github.com/nickpegg/dotfiles

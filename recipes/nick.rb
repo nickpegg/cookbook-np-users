@@ -2,7 +2,9 @@ require 'yaml'
 
 home_dir = '/home/nick'
 
-package 'zsh'
+package 'dotfiles requirements' do
+  package_name %w(git vim zsh)
+end
 
 user_account 'nick' do
   home home_dir
@@ -15,12 +17,6 @@ user_account 'nick' do
   ]
 end
 
-package 'git'
-
-git ::File.join(home_dir, '.oh-my-zsh') do
-  repository  'https://github.com/robbyrussell/oh-my-zsh.git'
-  user        'nick'
-end
 
 # Set up dotfiles
 # TODO: Make this a resource?
@@ -47,14 +43,28 @@ file ::File.join(home_dir, '...', 'conf') do
   mode '0644'
 
   content ddd_cfg.to_yaml
+  notifies :run, 'execute[... install]', :immediately
 end
 
 execute '... install' do
+  action      :nothing
   user        'nick'
   group       'nick'
   cwd         home_dir
   environment('HOME' => home_dir)
-  command     '.../... install'
+  command     "#{home_dir}/.../bin/... upgrade"
+  timeout     30
+end
 
-  only_if ".../... super_update 2>&1 | grep -E '(^Cloning into|^Fast-forward)'"
+execute 'bootstrap vim' do
+  action      :nothing
+  user        'nick'
+  group       'nick'
+  cwd         home_dir
+  environment('HOME' => home_dir)
+  command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
+  timeout     60
+
+  only_if     "ls #{home_dir}/.vimrc.bundles"
+  subscribes :run, 'execute[... install]', :immediately
 end
