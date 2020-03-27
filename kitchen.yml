@@ -26,6 +26,9 @@ suites:
       - recipe[np-users::rsaxvc]
     attributes:
       np-users:
+        extra_ssh_keys:
+          nick:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpjVgLcNQ+/tCo7PcGroR4WLSsUkZFXVzR8Zxl9+nu17FauoaMDf73FOJJt9iroaxPF8mJeZrLXswijuqFL2qnMG20ilOFNX6Ws7kd1FfxY4Nbhe4nqV3SAi0a4ZYzfgU15g3jadJ59R4NXCTf40XJIxDotRhWjKsvF7lFfTd84lMB1ueRcvbdK3TGJD9lvSHmL+q+7+fkFwdfTTwicgbEWtM7XQng3XoL+a4tBxHkIaxda44uxcIVVQYJchMt/5oTzCYpZggPa9sj1iefnLnonct1DrMYVMpx2izrWn9Cb6CPevXbT7kl7XzMofgtKI10YNUxFEFZyVpG8rIY5ilbUrxtzna7ytXDhj07CUTXpzbnUU2dnmtKN3HgPbrulau6GGfu1TyXb/vrCdjYGvcJqd0/HrL9LxqC4J+xwd0lg+S/uCcxWc9VyieNt5Tc0HhOFTyAP0b5/vUWsjLzPbJDq8i9S7IG5lDBuxNCJ/zgb85jmYPjABvSOcLuxYZbmr8= test key
         dotfiles:
           repos:
             nick:

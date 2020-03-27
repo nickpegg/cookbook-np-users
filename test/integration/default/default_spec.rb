@@ -8,6 +8,7 @@ end
 
 describe file('/home/nick/.ssh/authorized_keys') do
   its('content') { should match 'nick@polo' }
+  its('content') { should match 'mr8= test key' }
 end
 
 describe user('rsaxvc') do
