@@ -15,9 +15,12 @@ provisioner:
   channel: stable
 
 platforms:
-  - name: ubuntu-19.10
+  - name: ubuntu-20.04
   - name: ubuntu-18.04
   - name: debian-10
+  - name: nickpegg/archlinux-cinc
+    driver:
+      name: vagrant
 
 suites:
   - name: default
