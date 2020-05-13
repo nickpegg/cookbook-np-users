@@ -23,51 +23,46 @@ end
 
 # Set up dotfiles
 # TODO: Make this a resource?
-package 'cpio'
-
 unless node['np-users']['dotfiles']['repos']['nick'].nil?
-  repos = node['np-users']['dotfiles']['repos']['nick'].to_a
-else
-  repos = []
-end
+  package 'cpio'
+  ddd_cfg = { 'dots' => node['np-users']['dotfiles']['repos']['nick'].to_a }
 
-ddd_cfg = { 'dots' => repos }
+  git ::File.join(home_dir, '...') do
+    action :checkout
+    repository 'https://github.com/ingydotnet/...'
+    user 'nick'
+    enable_checkout false
+  end
 
-git ::File.join(home_dir, '...') do
-  action :checkout
-  repository 'https://github.com/ingydotnet/...'
-  user 'nick'
-  enable_checkout false
-end
+  file ::File.join(home_dir, '...', 'conf') do
+    user 'nick'
+    group 'nick'
+    mode '0644'
 
-file ::File.join(home_dir, '...', 'conf') do
-  user 'nick'
-  group 'nick'
-  mode '0644'
+    content ddd_cfg.to_yaml
+    notifies :run, 'execute[... install]', :immediately
+  end
 
-  content ddd_cfg.to_yaml
-  notifies :run, 'execute[... install]', :immediately
-end
+  execute '... install' do
+    action      :nothing
+    user        'nick'
+    group       'nick'
+    cwd         home_dir
+    environment('HOME' => home_dir)
+    command     "#{home_dir}/.../bin/... upgrade"
+    timeout     30
+  end
 
-execute '... install' do
-  action      :nothing
-  user        'nick'
-  group       'nick'
-  cwd         home_dir
-  environment('HOME' => home_dir)
-  command     "#{home_dir}/.../bin/... upgrade"
-  timeout     30
-end
+  execute 'bootstrap vim' do
+    action      :nothing
+    user        'nick'
+    group       'nick'
+    cwd         home_dir
+    environment('HOME' => home_dir)
+    command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
+    timeout     60
 
-execute 'bootstrap vim' do
-  action      :nothing
-  user        'nick'
-  group       'nick'
-  cwd         home_dir
-  environment('HOME' => home_dir)
-  command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
-  timeout     60
-
-  only_if     "ls #{home_dir}/.vimrc.bundles"
-  subscribes :run, 'execute[... install]', :immediately
+    only_if     "ls #{home_dir}/.vimrc.bundles"
+    subscribes :run, 'execute[... install]', :immediately
+  end
 end
