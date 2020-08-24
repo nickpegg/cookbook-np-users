@@ -4,3 +4,5 @@ default[:user][:ssh_keygen] = false
 default['np-users']['extra_ssh_keys'] = {
   'nick' => [],
 }
+
+default['np-users']['nick']['in_docker_group'] = false

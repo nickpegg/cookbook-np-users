@@ -3,6 +3,7 @@ describe user('nick') do
   it { should exist }
   its('groups') { should include 'nick' }
   its('groups') { should include 'sudo' }
+  its('groups') { should_not include 'docker' }
   its('shell') { should eq '/usr/bin/zsh' }
 end
 

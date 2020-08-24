@@ -12,9 +12,14 @@ nick_ssh_keys = [
 
 nick_ssh_keys += node['np-users']['extra_ssh_keys']['nick']
 
+groups = ['sudo']
+if node['np-users']['nick']['in_docker_group']
+  groups << 'docker'
+end
+
 user_account 'nick' do
   home home_dir
-  groups ['sudo', 'docker']
+  groups groups
   shell '/usr/bin/zsh'
   ssh_keygen false
   ssh_keys nick_ssh_keys
