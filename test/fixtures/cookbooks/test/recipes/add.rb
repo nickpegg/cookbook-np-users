@@ -6,6 +6,7 @@ np_system_user 'jawn' do
 end
 
 np_system_user 'custom' do
+  group 'farts'
   comment 'another'
   home '/opt/lol'
   shell '/bin/bash'
