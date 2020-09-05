@@ -11,6 +11,7 @@ default['np-users']['nick']['in_docker_group'] = false
 # You should always opt to put users here rather than in individual cookbooks
 # so that this is the single, canonical list of UIDs.
 default['np-users']['uids'] = {
-  'consul' => 2000,
-  'nomad' => 2001,
+  'consul'      => 2000,
+  'nomad'       => 2001,
+  'prometheus'  => 2002,
 }
