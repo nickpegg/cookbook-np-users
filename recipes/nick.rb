@@ -30,7 +30,10 @@ end
 # TODO: Make this a resource?
 unless node['np-users']['dotfiles']['repos']['nick'].nil?
   package 'cpio'
-  ddd_cfg = { 'dots' => node['np-users']['dotfiles']['repos']['nick'].to_a }
+  ddd_cfg = {
+    'dots' => node['np-users']['dotfiles']['repos']['nick'].to_a,
+    'install_method' => 'symlink',
+  }
 
   git ::File.join(home_dir, '...') do
     action :checkout
