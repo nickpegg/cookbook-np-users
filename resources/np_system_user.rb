@@ -15,15 +15,15 @@ property :home, String, default: '/dev/null'
 property :shell, String, default: '/bin/false'
 
 action :create do
-  unless node['np-users']['uids'].has_key? new_resource.username
+  unless node['np-users']['uids'].key? new_resource.username
     raise "No UID defined in attributes for user #{new_resource.username}"
   end
 
-  if new_resource.group.nil?
-    group_name = new_resource.username
-  else
-    group_name = new_resource.group
-  end
+  group_name = if new_resource.group.nil?
+                 new_resource.username
+               else
+                 new_resource.group
+               end
 
   group group_name do
     gid node['np-users']['uids'][new_resource.username]

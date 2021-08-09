@@ -3,7 +3,6 @@ maintainer 'Nick Pegg'
 maintainer_email 'nick@nickpegg.com'
 license 'MIT'
 description 'Sets up users'
-long_description 'Sets up users'
 version '0.2.0'
 
 source_url 'https://github.com/nickpegg/cookbook-np-users'

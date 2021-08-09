@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: np-users
+# Copyright:: 2015-2021 Nick Pegg
+# Cookbook:: np-users
 # Spec:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
