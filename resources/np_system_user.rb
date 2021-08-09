@@ -1,6 +1,8 @@
 # Manages a system user with a stable UID, for users which should exist across
 # the fleet
 
+unified_mode true
+
 resource_name :np_system_user
 provides :np_system_user
 
