@@ -5,9 +5,6 @@ verifier:
 driver:
   name: docker
   use_sudo: false
-  provision_command:
-    - apt-get update
-    - apt-get install -y curl wget net-tools
 
 provisioner:
   name: chef_zero
@@ -16,13 +13,10 @@ provisioner:
 
 platforms:
   - name: ubuntu-20.04
-  - name: ubuntu-18.04
   - name: debian-10
   - name: arch
     driver:
-      provision_command: ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
-      image: nickpegg/archlinux-cinc
-      box: nickpegg/archlinux-cinc
+      image: nickpegg/archlinux-kitchen-cinc
 
 suites:
   - name: default
@@ -54,8 +48,10 @@ suites:
       - recipe[test::add]
     includes:
       - debian-10
+      - arch
   - name: system_remove
     run_list:
       - recipe[test::remove]
     includes:
       - debian-10
+      - arch

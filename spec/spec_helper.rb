@@ -5,14 +5,14 @@ module SpecHelper
   @@runner = {} # rubocop:disable Style/ClassVars
 
   def common_stubs # rubocop:disable Metrics/MethodLength
-    stub_data_bag('users').and_return(%w[nick test1])
+    stub_data_bag('users').and_return(%w(nick test1))
     stub_data_bag_item('users', 'nick').and_return(
       'id' => 'nick',
       'dotfiles_repos' => [
-        { 'repo' => 'https://github.com/nickpegg/dotfiles' }
+        { 'repo' => 'https://github.com/nickpegg/dotfiles' },
       ],
       'u2f_keys' => [
-        'some_yubikey'
+        'some_yubikey',
       ]
     )
 

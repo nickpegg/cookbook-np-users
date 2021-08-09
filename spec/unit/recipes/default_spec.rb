@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: np-users
+# Copyright:: 2015-2021 Nick Pegg
+# Cookbook:: np-users
 # Spec:: default
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
@@ -15,6 +15,5 @@ describe 'np-users::default' do
 
   subject { @chef_run }
 
-  it { is_expected.to include_recipe('user::data_bag') }
   it { is_expected.to include_recipe('np-users::nick') }
 end
