@@ -68,7 +68,7 @@ unless node['np-users']['dotfiles']['repos']['nick'].nil?
     cwd         home_dir
     environment('HOME' => home_dir)
     command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
-    timeout     60
+    timeout     120
 
     only_if     "ls #{home_dir}/.vimrc.bundles"
     subscribes :run, 'execute[... install]', :immediately
