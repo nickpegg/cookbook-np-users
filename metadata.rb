@@ -14,5 +14,4 @@ depends 'user', '>= 0.6.0'
 
 supports 'arch'
 supports 'debian', '~> 10.0'
-supports 'ubuntu', '= 18.04'
 supports 'ubuntu', '= 20.04'
