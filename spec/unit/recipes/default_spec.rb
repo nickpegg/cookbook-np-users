@@ -15,6 +15,5 @@ describe 'np-users::default' do
 
   subject { @chef_run }
 
-  it { is_expected.to include_recipe('user::data_bag') }
   it { is_expected.to include_recipe('np-users::nick') }
 end
