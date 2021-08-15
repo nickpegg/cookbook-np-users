@@ -46,12 +46,6 @@ suites:
   - name: system_add
     run_list:
       - recipe[test::add]
-    includes:
-      - debian-10
-      - arch
   - name: system_remove
     run_list:
       - recipe[test::remove]
-    includes:
-      - debian-10
-      - arch
