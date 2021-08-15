@@ -31,8 +31,12 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Test
-        run: bundle exec kitchen test --color ${{ matrix.suite }}-${{ matrix.os }}
+      - name: Create
+        run: bundle exec kitchen create --color ${{ matrix.suite }}-${{ matrix.os }}
+      - name: Converge
+        run: bundle exec kitchen converge --color ${{ matrix.suite }}-${{ matrix.os }}
+      - name: Verify
+        run: bundle exec kitchen verify --color ${{ matrix.suite }}-${{ matrix.os }}
   style_and_unit:
     runs-on: ubuntu-latest
     steps:
