@@ -31,10 +31,7 @@ suites:
         dotfiles:
           repos:
             nick:
-              - repo: https://github.com/nickpegg/dotfiles
-                branch: polo
-                path: polo
-              - repo: https://github.com/nickpegg/dotfiles
+              repo: https://github.com/nickpegg/dotfiles
   - name: empty_dotfiles
     run_list:
       - recipe[np-users::nick]

@@ -2,9 +2,14 @@ require 'yaml'
 
 home_dir = '/home/nick'
 
-package 'git'
-package 'vim'
-package 'zsh'
+package %w(git vim zsh)
+
+# python > 3.5 is required by dotbot
+if platform?('arch')
+  package 'python'
+else
+  package 'python3'
+end
 
 nick_ssh_keys = [
   'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAcVz27V8ysX1OYv5f89qHK7FktiHVruU4dJRsJvoDQn nick@passat',
@@ -27,50 +32,45 @@ user_account 'nick' do
 end
 
 # Set up dotfiles
-# TODO: Make this a resource?
-unless node['np-users']['dotfiles']['repos']['nick'].nil?
-  package 'cpio'
-  ddd_cfg = {
-    'dots' => node['np-users']['dotfiles']['repos']['nick'].to_a,
-    'install_method' => 'symlink',
-  }
+dotfile_attrs = node['np-users']['dotfiles']['repos']['nick']
+unless dotfile_attrs.nil?
+  dotfiles_path = dotfile_attrs['path'] || ::File.join(home_dir, '.dotfiles')
+  dotfiles_ref = dotfile_attrs['ref'] || 'main'
 
-  git ::File.join(home_dir, '...') do
+  git dotfiles_path do
     action :checkout
-    repository 'https://github.com/ingydotnet/...'
+    repository dotfile_attrs['repo']
+    revision dotfiles_ref
     user 'nick'
-    enable_checkout false
+    enable_submodules true
+    # enable_checkout false
+
+    notifies :run, 'execute[dotbot install]', :immediately
   end
 
-  file ::File.join(home_dir, '...', 'conf') do
-    user 'nick'
-    group 'nick'
-    mode '0644'
-
-    content YAML.dump(ddd_cfg)
-    notifies :run, 'execute[... install]', :immediately
-  end
-
-  execute '... install' do
+  execute 'dotbot install' do
     action      :nothing
     user        'nick'
     group       'nick'
-    cwd         home_dir
+    cwd         dotfiles_path
     environment('HOME' => home_dir)
-    command     "#{home_dir}/.../bin/... upgrade"
+    command     'bin/dotbot -c .install.conf.yaml'
     timeout     30
   end
 
-  execute 'bootstrap vim' do
-    action      :nothing
-    user        'nick'
-    group       'nick'
-    cwd         home_dir
-    environment('HOME' => home_dir)
-    command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
-    timeout     120
+  # TODO: Revisit this. Some plugins take foreverrr to install (like
+  # python-mode), and I don't want Chef waiting forever for them
+  #
+  # execute 'bootstrap vim' do
+  #   action      :nothing
+  #   user        'nick'
+  #   group       'nick'
+  #   cwd         home_dir
+  #   environment('HOME' => home_dir)
+  #   command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
+  #   timeout     300
 
-    only_if     "ls #{home_dir}/.vimrc.bundles"
-    subscribes :run, 'execute[... install]', :immediately
-  end
+  #   only_if     "ls #{home_dir}/.vimrc.bundles"
+  #   subscribes :run, 'execute[dotbot install]', :immediately
+  # end
 end

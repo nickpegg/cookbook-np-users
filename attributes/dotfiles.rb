@@ -4,13 +4,12 @@
 # workstation machine you may want some additional repos.
 #
 # Easiest way to describe the format is to give an example:
-# node.default[:dotfiles][:repos][user] = [
-#   {
-#     repo: 'https://github.com/user/dotfiles',
-#     branch: 'some-branch',
-#     path: 'some-dotdotdot-path'
-#   },
-# ]
+# node.default[:dotfiles][:repos][user] = {
+#   # Git repo to clone
+#   repo: 'https://github.com/user/dotfiles',
 #
-# If `:path` is omitted, the branch name is used for it
+#   # Git ref to check out, could be a branch, or commit. Defaults to main.
+#   ref: 'some-branch',
+#   path: 'some-dotdotdot-path'
+# }
 default['np-users']['dotfiles']['repos'] = {}
