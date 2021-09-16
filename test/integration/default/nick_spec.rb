@@ -5,8 +5,6 @@ end
 
 # Check that vim has been bootstrapped by gruvbox's existence. This might have
 # to change if Nick gets rid of gruvbox.
-#
-# TODO: Re-enable this when vim bootstrapping doesn't take so ding-dang long
-# describe directory '/home/nick/.vim/bundle/gruvbox' do
-#   it { should exist }
-# end
+describe directory '/home/nick/.vim/plugged/gruvbox' do
+  it { should exist }
+end

@@ -17,6 +17,7 @@ platforms:
   - name: arch
     driver:
       image: nickpegg/archlinux-kitchen-cinc
+      provision_command: pacman --noconfirm -Syu
 
 suites:
   - name: default

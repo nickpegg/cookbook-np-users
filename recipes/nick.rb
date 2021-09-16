@@ -5,9 +5,8 @@ home_dir = '/home/nick'
 package %w(git vim zsh)
 
 # python > 3.5 is required by dotbot
-if platform?('arch')
-  package 'python'
-else
+package 'python'
+if !platform?('arch')
   package 'python3'
 end
 
@@ -58,19 +57,16 @@ unless dotfile_attrs.nil?
     timeout     30
   end
 
-  # TODO: Revisit this. Some plugins take foreverrr to install (like
-  # python-mode), and I don't want Chef waiting forever for them
-  #
-  # execute 'bootstrap vim' do
-  #   action      :nothing
-  #   user        'nick'
-  #   group       'nick'
-  #   cwd         home_dir
-  #   environment('HOME' => home_dir)
-  #   command     "vim -u #{home_dir}/.vimrc.bundles +PluginInstall +qall"
-  #   timeout     300
+  execute 'bootstrap vim' do
+    action      :nothing
+    user        'nick'
+    group       'nick'
+    cwd         home_dir
+    environment('HOME' => home_dir)
+    command     "vim -u #{home_dir}/.vimrc.plugins +PlugInstall +qall"
+    timeout     300
 
-  #   only_if     "ls #{home_dir}/.vimrc.bundles"
-  #   subscribes :run, 'execute[dotbot install]', :immediately
-  # end
+    only_if     "ls #{home_dir}/.vimrc.plugins"
+    subscribes :run, 'execute[dotbot install]', :immediately
+  end
 end
