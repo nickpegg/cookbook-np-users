@@ -6,7 +6,7 @@ package %w(git vim zsh)
 
 # python > 3.5 is required by dotbot
 package 'python'
-if !platform?('arch')
+unless platform?('arch')
   package 'python3'
 end
 
