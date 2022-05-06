@@ -5,6 +5,9 @@ verifier:
 driver:
   name: docker
   use_sudo: false
+  # ed25519 key, needed by newer OpenSSH
+  public_key: test/ssh_key.pub
+  private_key: test/ssh_key
 
 provisioner:
   name: chef_zero
@@ -13,11 +16,11 @@ provisioner:
 
 platforms:
   - name: ubuntu-20.04
-  - name: debian-10
+  - name: debian-11
   - name: arch
     driver:
       image: nickpegg/archlinux-kitchen-cinc
-      provision_command: pacman --noconfirm -Syu
+      provision_command: pacman --noconfirm -Syyu
 
 suites:
   - name: default

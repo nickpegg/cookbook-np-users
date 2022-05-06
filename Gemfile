@@ -1,15 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'kitchen-inspec'
+gem 'kitchen-sync'
+gem 'kitchen-vagrant'
+gem 'kitchen-docker'
+gem 'mixlib-install', git: 'https://gitlab.com/cinc-project/upstream/mixlib-install.git', branch: 'stable/cinc'
+gem 'test-kitchen'
 gem 'berkshelf'
+gem 'rake'
 gem 'cookstyle'
 gem 'chefspec'
-gem 'docker-api'
-gem 'fauxhai'
-gem 'kitchen-docker'
-gem 'kitchen-inspec', '>= 1.3.0'  # This version helps the dep resolver along
-gem 'kitchen-sync'
-gem 'pry'
-gem 'rspec'
-gem 'test-kitchen'
-
-gem 'mixlib-install', git: 'https://gitlab.com/cinc-project/mixlib-install.git', branch: 'stable/cinc'

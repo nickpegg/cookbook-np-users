@@ -1,8 +1,2 @@
 Layout/LineLength:
   Max: 100
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Metrics/BlockLength:
-  Max: 100

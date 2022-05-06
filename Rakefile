@@ -1,6 +1,17 @@
-require 'rake'
+require 'cookstyle'
+require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new
+task default: [:cookstyle, :spec]
+task all: [:default, :kitchen]
 
-task default: %i(spec)
+RuboCop::RakeTask.new(:cookstyle) do |task|
+  task.options << '--display-cop-names'
+end
+
+RSpec::Core::RakeTask.new(:spec)
+
+desc 'Run Kitchen tests'
+task :kitchen do
+  sh 'kitchen test'
+end
