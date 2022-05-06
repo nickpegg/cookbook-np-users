@@ -11,5 +11,5 @@ issues_url 'https://github.com/nickpegg/cookbook-np-users/issues'
 depends 'user', '>= 0.6.0'
 
 supports 'arch'
-supports 'debian', '~> 10.0'
+supports 'debian', '~> 11.0'
 supports 'ubuntu', '= 20.04'

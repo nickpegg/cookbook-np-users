@@ -2,6 +2,8 @@ require 'yaml'
 
 home_dir = '/home/nick'
 
+apt_update
+
 package %w(git vim zsh)
 
 # python > 3.5 is required by dotbot

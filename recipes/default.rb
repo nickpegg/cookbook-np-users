@@ -4,6 +4,4 @@
 # Recipe:: default
 #
 
-apt_update
-
 include_recipe 'np-users::nick'
