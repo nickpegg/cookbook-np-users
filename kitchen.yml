@@ -15,6 +15,7 @@ provisioner:
   channel: stable
 
 platforms:
+  - name: ubuntu-22.04
   - name: ubuntu-20.04
   - name: debian-11
   - name: arch
