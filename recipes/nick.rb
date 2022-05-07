@@ -7,8 +7,9 @@ apt_update
 package %w(git vim zsh)
 
 # python > 3.5 is required by dotbot
-package 'python'
-unless platform?('arch')
+if platform?('arch')
+  package 'python'
+else
   package 'python3'
 end
 
@@ -56,7 +57,7 @@ unless dotfile_attrs.nil?
     group       'nick'
     cwd         dotfiles_path
     environment('HOME' => home_dir)
-    command     'bin/dotbot -c .install.conf.yaml'
+    command     'bin/dotbot -c install.conf.yaml'
     timeout     30
   end
 
