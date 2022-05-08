@@ -4,7 +4,7 @@ home_dir = '/home/nick'
 
 apt_update
 
-package %w(git vim zsh)
+package %w(git sudo vim zsh)
 
 # python > 3.5 is required by dotbot
 if platform?('arch')
@@ -26,12 +26,32 @@ if node['np-users']['nick']['in_docker_group']
   groups << 'docker'
 end
 
-user_account 'nick' do
+user 'nick' do
   home home_dir
-  groups groups
   shell '/usr/bin/zsh'
-  ssh_keygen false
-  ssh_keys nick_ssh_keys
+end
+
+directory home_dir do
+  owner 'nick'
+  group 'nick'
+end
+
+groups.each do |group_name|
+  group group_name do
+    append true
+    members 'nick'
+  end
+end
+
+directory ::File.join(home_dir, '.ssh') do
+  owner 'nick'
+  group 'nick'
+end
+
+file ::File.join(home_dir, '.ssh/authorized_keys') do
+  owner 'nick'
+  group 'nick'
+  content nick_ssh_keys.join("\n")
 end
 
 # Set up dotfiles
