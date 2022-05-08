@@ -6,7 +6,7 @@ ssh_keys = [
 
 user 'rsaxvc' do
   home home_dir
-  shell "/bin/bash"
+  shell '/bin/bash'
 end
 
 directory home_dir do
