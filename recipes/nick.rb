@@ -2,7 +2,9 @@ require 'yaml'
 
 home_dir = '/home/nick'
 
-apt_update
+apt_update do
+  only_if { node.platform?('debian') || node.platform?('ubuntu') }
+end
 
 package %w(git sudo vim zsh)
 
