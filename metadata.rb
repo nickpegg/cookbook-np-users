@@ -8,7 +8,6 @@ version '0.3.3'
 source_url 'https://github.com/nickpegg/cookbook-np-users'
 issues_url 'https://github.com/nickpegg/cookbook-np-users/issues'
 
-supports 'arch'
 supports 'debian', '~> 11.0'
 supports 'fedora', '= 39'
 supports 'ubuntu', '= 20.04'
