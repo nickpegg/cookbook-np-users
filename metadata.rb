@@ -9,6 +9,6 @@ source_url 'https://github.com/nickpegg/cookbook-np-users'
 issues_url 'https://github.com/nickpegg/cookbook-np-users/issues'
 
 supports 'debian', '~> 11.0'
-supports 'fedora', '= 39'
+supports 'fedora', '~> 39.0'
 supports 'ubuntu', '= 20.04'
 supports 'ubuntu', '= 22.04'
