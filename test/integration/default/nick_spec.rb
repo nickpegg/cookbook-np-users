@@ -3,7 +3,11 @@ describe user('nick') do
   its('groups') { should include 'nick' }
   its('groups') { should include 'sudo' }
   its('groups') { should_not include 'docker' }
-  its('shell') { should eq '/usr/bin/zsh' }
+  its('shell') { should eq '/usr/bin/fish' }
+end
+
+describe file('/usr/bin/fish') do
+  it { should exist }
 end
 
 describe file('/home/nick/.ssh/authorized_keys') do
@@ -15,7 +19,7 @@ describe file('/home/nick/.ssh/authorized_keys') do
 end
 
 # Make sure dotfiles exist
-describe file '/home/nick/.zshrc' do
+describe file '/home/nick/.config/fish/config.fish' do
   it { should exist }
 end
 
