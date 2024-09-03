@@ -3,10 +3,7 @@ verifier:
   name: inspec
 
 driver:
-  name: vagrant
-  customize:
-    memory: 512
-  linked_clone: true
+  name: docker
   # ed25519 key, needed by newer OpenSSH
   public_key: test/ssh_key.pub
   private_key: test/ssh_key
@@ -21,10 +18,6 @@ platforms:
   - name: ubuntu-20.04
   - name: debian-11
   - name: fedora-39
-  - name: arch
-    driver:
-      image: nickpegg/archlinux-kitchen-cinc
-      provision_command: pacman --noconfirm -Syyu
 
 suites:
   - name: default

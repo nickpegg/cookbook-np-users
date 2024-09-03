@@ -21,8 +21,8 @@ jobs:
           - system-add
           - system-remove
         os:
-          - arch
           - debian-11
+          - fedora-39
           - ubuntu-2004
           - ubuntu-2204
     steps:
