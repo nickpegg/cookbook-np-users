@@ -6,7 +6,7 @@ apt_update do
   only_if { node.platform?('debian') || node.platform?('ubuntu') }
 end
 
-package %w(git sudo vim zsh)
+package %w(git sudo vim fish)
 
 # python > 3.5 is required by dotbot
 if platform?('arch')
@@ -30,7 +30,7 @@ end
 
 user 'nick' do
   home home_dir
-  shell '/usr/bin/zsh'
+  shell '/usr/bin/fish'
 end
 
 directory home_dir do
