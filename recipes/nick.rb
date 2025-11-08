@@ -6,7 +6,7 @@ apt_update do
   only_if { node.platform?('debian') || node.platform?('ubuntu') }
 end
 
-package %w(git sudo vim fish)
+package %w(git sudo vim fish direnv)
 
 # python > 3.5 is required by dotbot
 if platform?('arch')
